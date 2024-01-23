@@ -29,7 +29,7 @@ const WelcomeComponent = () => {
     <div className="container-fluid mt-10 flex align-content-center justify-center">
       <div className="bg-white p-8 border rounded-3xl border-slate-300 shadow-lg shadow-gray-500/50 sm:w-full mx-5 lg:w-5/6">
         <h1 className="text-4xl font-extrabold text-left">Welcome to Quiz App</h1>
-        <p className="text-left text-lg">This quiz will contain a total of 9 questions. Each question holds 1 points.</p>
+        <p className="text-left text-lg">This quiz will contain a total of 10 questions. Each question holds 1 points.</p>
         <h4 className="text-2xl font-bold mt-5">Rules:</h4>
         <ol className="list-decimal ml-5 text-lg">
           <li>Correct Question gives you 1 points</li>
