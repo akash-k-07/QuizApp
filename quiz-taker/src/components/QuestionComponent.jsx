@@ -78,7 +78,7 @@ class QuestionComponent extends Component {
     if (option.correct) {
       this.setState(
         (prevState) => ({
-          points: prevState.points + 10,
+          points: prevState.points + 1,
           correctAnswer: prevState.correctAnswer + 1,
         }),
         () => {
@@ -92,7 +92,7 @@ class QuestionComponent extends Component {
       console.log('Incorrect option chosen. Expected correct option:', correctOption);
       this.setState(
         (prevState) => ({
-          points: prevState.points - 10,
+          points: prevState.points - 0.25,
           incorrectAnswer: prevState.incorrectAnswer + 1,
         }),
         () => {
