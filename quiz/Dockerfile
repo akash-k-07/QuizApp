@@ -5,7 +5,7 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:17.0.1-jdk-slim
-COPY --from=build /target/index-0.0.1-SNAPSHOT.jar index.jar
+COPY --from=build /target/quiz-0.0.1-SNAPSHOT.jar index.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","index.jar"]
 
