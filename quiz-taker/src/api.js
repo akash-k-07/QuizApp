@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:8080/api/quiz', // Set the base URL without the '/users'
+  baseURL: 'https://quiz-app-backend-rt73.onrender.com/api/quiz',
 });
 
 export const sendUserName = async (name) => {
   try {
-    const response = await instance.post('/users', { name }); // Update the URL path to '/users'
-    return response.data; // Assuming your backend returns the created user
+    const response = await instance.post('/users', { name }); 
+    return response.data; 
   } catch (error) {
     throw error;
   }
