@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { sendUserName } from '../api'; // Update with your correct path
+import { sendUserName } from '../api';
 
 const WelcomeComponent = () => {
   const navigate = useNavigate();

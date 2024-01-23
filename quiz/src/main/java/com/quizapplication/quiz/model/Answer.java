@@ -7,7 +7,7 @@ public class Answer {
     @Id
     private String id;
     private String text;
-    private boolean isCorrect;
+    private boolean correct;
     private String userId;
     private String questionId;  // Add this property
 
@@ -17,9 +17,9 @@ public class Answer {
         // Default constructor
     }
 
-    public Answer(String text, boolean isCorrect, String userId, String questionId) {
+    public Answer(String text, boolean correct, String userId, String questionId) {
         this.text = text;
-        this.isCorrect = isCorrect;
+        this.correct = correct;
         this.userId = userId;
         this.questionId = questionId;  // Set the questionId
     }
@@ -43,11 +43,11 @@ public class Answer {
     }
 
     public boolean isCorrect() {
-        return isCorrect;
+        return correct;
     }
 
     public void setCorrect(boolean correct) {
-        isCorrect = correct;
+        correct = correct;
     }
 
     public String getUserId() {

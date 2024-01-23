@@ -5,10 +5,14 @@ import com.quizapplication.quiz.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/questions")
+@RequestMapping("/api/quiz/questions")
 public class QuestionController {
 
     private final QuestionService questionService;
@@ -19,8 +23,32 @@ public class QuestionController {
     }
 
     @GetMapping("/all")
-    public List<Question> getAllQuestions() {
-        return questionService.getAllQuestions();
+    public List<Map<String, Object>> getAllQuestions() {
+        List<Question> questions = questionService.getAllQuestions();
+        return questions.stream().map(this::mapQuestionToDto).collect(Collectors.toList());
+    }
+
+    private Map<String, Object> mapQuestionToDto(Question question) {
+        Map<String, Object> dto = new HashMap<>();
+        dto.put("id", question.getId());
+        dto.put("questionText", question.getQuestionText());
+
+        if (question.getOptions() != null) {
+            List<Map<String, Object>> optionsDto = question.getOptions().stream()
+                    .map(option -> {
+                        Map<String, Object> optionDto = new HashMap<>();
+                        optionDto.put("text", option.getText());
+                        optionDto.put("correct", option.isCorrect());
+                        return optionDto;
+                    })
+                    .collect(Collectors.toList());
+
+            dto.put("options", optionsDto);
+        } else {
+            dto.put("options", Collections.emptyList()); // or any other appropriate handling
+        }
+
+        return dto;
     }
 
     @GetMapping("/{id}")
